@@ -1,0 +1,10 @@
+<tr id="itemRow{{item_id}}">
+    <td>
+        <button class="acds-element" onclick="deleteItemClick(event, {{item_id}});"><i class="bi bi-trash"></i></button>
+    </td>
+    <td id="itemName{{item_id}}">{{name}}</td>
+    <td>
+        <input id="itemDescription{{item_id}}" class="acds-element" type="text" value="{{description}}"
+            style="width: 800px; border: none; color: lightgray" onchange="itemDescriptionChange(event, {{item_id}})">
+    </td>
+</tr>

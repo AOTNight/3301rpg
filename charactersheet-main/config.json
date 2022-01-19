@@ -1,0 +1,10 @@
+{
+    "info": {
+        "rpgname": "As Crônicas das Sombras",
+        "rpgacronym": "ACDS",
+        "playerrole": "Caçador"
+    },
+    "encryption": {
+        "saltRounds": 10
+    }
+}

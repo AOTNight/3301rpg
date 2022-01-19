@@ -1,0 +1,79 @@
+.acds-container {
+    border-style: solid;
+    border-width: 1px;
+    border-color: gray;
+    border-radius: 20px;
+}
+
+.acds-clickable:hover {
+    cursor: pointer;
+}
+
+body {
+    background-color: black !important;
+    color: white !important;
+}
+
+.acds-element {
+    background-color: black !important;
+    color: white !important;
+}
+
+.skill-container {
+    background-color: black;
+}
+
+.skill-container:hover {
+    background-color: white;
+}
+
+.skill-container:hover .acds-element {
+    background-color: white !important;
+    color: black !important;
+}
+
+.skill-container .skill-label {
+    color: white;
+}
+
+.skill-container:hover .skill-label {
+    color: black;
+}
+
+.acds-bottom-text {
+    outline: 0;
+    border-width: 0 0 1px;
+    width: 100%;
+}
+
+.form-control:focus {
+    border-color: #aa2121;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px #aa2121;
+}
+
+.modal-content {
+    background-color: black;
+}
+
+.modal-header {
+    border-bottom: 1px solid #222222;
+}
+
+.modal-footer {
+    border-top: 1px solid black;
+}
+
+.progress {
+    height: 40px;
+}
+
+#avatar {
+    border: solid 1px white;
+    max-height: 255px;
+    min-width: 100px;
+    min-height: 100px;
+}
+
+* {
+    font-family: 'Cinzel', serif;
+}

@@ -1,7 +1,7 @@
 const knex = require('knex')(
     {
         client: 'mysql',
-        connection: process.env.db4free.net,
+        connection: process.env.DATABASE_URL,
         asyncStackTraces: false,
         debug: false
     });

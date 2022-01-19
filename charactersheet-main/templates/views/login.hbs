@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>{{rpgname}}</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+    <h1>Logar</h1>
+    <form id="loginForm">
+        <p>
+            <input type="text" placeholder="Login" id="username" name="username" required />
+            <input type="password" placeholder="Senha" id="password" name="password" required />
+        </p>
+        <p><input type="submit" value="Entrar" /></p>
+    </form>
+
+    <p>Não possui cadastro? <a href="/register">Registrar-se</a></p>
+
+    <script>
+        const loginForm = $('#loginForm');
+
+        function onLoginSuccess(data) {
+            let admin = data.admin;
+
+            const success = $(document.createElement('p'));
+            success.css({ color: 'green', fontSize: '24' })
+                .text(`Logado com sucesso! Redirecionando para a ficha...`);
+            $('body').append(success);
+
+            let url = admin ? '/sheet/admin/1' : '/sheet/1';
+            location.replace(url);
+        }
+
+        function onLoginFail(err) {
+            const error = $(document.createElement('p'));
+
+            error.css({ color: 'red', fontSize: '24' })
+                .text(`Erro: ${err.responseText}`);
+
+            $('body').append(error);
+
+            setTimeout(() => {
+                error.fadeOut(2000, () => error.remove());
+            }, 500);
+
+            console.error(err);
+
+            loginForm.show();
+        }
+
+        loginForm.submit(ev => {
+            ev.preventDefault();
+
+            loginForm.hide();
+
+            const pass = $('#password');
+
+            const username = $('#username').val();
+            const password = pass.val();
+            pass.val('');
+
+            $.ajax('/login',
+                {
+                    method: 'POST',
+                    data: { username, password },
+                    success: onLoginSuccess,
+                    error: onLoginFail
+                });
+        });
+
+    </script>
+</body>
+
+</html>
