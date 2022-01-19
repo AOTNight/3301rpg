@@ -1,8 +1,8 @@
 {
     "info": {
-        "rpgname": "As Crônicas das Sombras",
-        "rpgacronym": "ACDS",
-        "playerrole": "Caçador"
+        "rpgname": "3301 RPG",
+        "rpgacronym": "3301rpg",
+        "playerrole": "Agente"
     },
     "encryption": {
         "saltRounds": 10

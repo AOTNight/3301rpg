@@ -1,7 +1,7 @@
 {
-  "name": "charactersheet",
+  "name": "3301 RPG",
   "version": "1.0.0",
-  "description": "RPG Character Sheet",
+  "description": "Ficha do 3301 RPG",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lunapiresfernandescefet/charactersheet.git"
+    "url": "git+https://github.com/AOTNight/3301rpg/.git"
   },
   "keywords": [],
-  "author": "Luna Fernandes",
+  "author": "AOTNight",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lunapiresfernandescefet/charactersheet/issues"
+    "url": "https://github.com/AOTNight/3301rpg/issues"
   },
-  "homepage": "https://github.com/lunapiresfernandescefet/charactersheet#readme",
+  "homepage": "https://github.com/AOTNight/3301rpg/#readme",
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.0",

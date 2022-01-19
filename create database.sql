@@ -17,14 +17,11 @@ CREATE TABLE `characteristic` (
     PRIMARY KEY (`characteristic_id`)
 );
 
+INSERT INTO `characteristic` (`name`, `rollable`) VALUES ('Agilidade', TRUE);
 INSERT INTO `characteristic` (`name`, `rollable`) VALUES ('Força', TRUE);
-INSERT INTO `characteristic` (`name`, `rollable`) VALUES ('Destreza', TRUE);
-INSERT INTO `characteristic` (`name`, `rollable`) VALUES ('Inteligência', TRUE);
-INSERT INTO `characteristic` (`name`, `rollable`) VALUES ('Constituição', TRUE);
-INSERT INTO `characteristic` (`name`, `rollable`) VALUES ('Aparência', TRUE);
-INSERT INTO `characteristic` (`name`, `rollable`) VALUES ('Poder', TRUE);
-INSERT INTO `characteristic` (`name`, `rollable`) VALUES ('Tamanho', TRUE);
-INSERT INTO `characteristic` (`name`, `rollable`) VALUES ('Educação', TRUE);
+INSERT INTO `characteristic` (`name`, `rollable`) VALUES ('Vigor', TRUE);
+INSERT INTO `characteristic` (`name`, `rollable`) VALUES ('Presença', TRUE);
+INSERT INTO `characteristic` (`name`, `rollable`) VALUES ('Intelecto', TRUE);
 INSERT INTO `characteristic` (`name`, `rollable`) VALUES ('Movimento', FALSE);
 
 CREATE TABLE `player_characteristic` (
@@ -38,20 +35,6 @@ CREATE TABLE `player_characteristic` (
     CONSTRAINT `fk_player_characteristic_characteristic_id` FOREIGN KEY (`characteristic_id`) REFERENCES `characteristic`(`characteristic_id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-CREATE TABLE `specialization` (
-    `specialization_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    `name` varchar(255) NOT NULL,
-    PRIMARY KEY (`specialization_id`)
-);
-
-INSERT INTO `specialization` (`name`) VALUES ('Armas de Fogo');
-INSERT INTO `specialization` (`name`) VALUES ('Arte e Ofício');
-INSERT INTO `specialization` (`name`) VALUES ('Ciência');
-INSERT INTO `specialization` (`name`) VALUES ('Língua');
-INSERT INTO `specialization` (`name`) VALUES ('Lutar');
-INSERT INTO `specialization` (`name`) VALUES ('Pilotar');
-INSERT INTO `specialization` (`name`) VALUES ('Sobrevivência');
-
 CREATE TABLE `skill` (
     `skill_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
     `specialization_id` INT UNSIGNED NULL,
@@ -62,85 +45,85 @@ CREATE TABLE `skill` (
     CONSTRAINT `fk_skill_specialization_id` FOREIGN KEY (`specialization_id`) REFERENCES `specialization`(`specialization_id`) ON DELETE CASCADE ON UPDATE CASCADE
 );
 
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Antropologia', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (1, 'Arcos', 15, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (1, 'Armas Pesadas', 10, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (1, 'Lança-Chamas', 10, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (1, 'Metralhadoras', 10, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (1, 'Pistolas', 20, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (1, 'Rifles/Espingardas', 25, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (1, 'Submetralhadoras', 15, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Arqueologia', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Arremessar', 20, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (2, 'Atuação', 5, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (2, 'Belas Artes', 5, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (2, 'Criptografia', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (2, 'Falsificação', 5, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (2, 'Fotografia', 5, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Artilharia', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Avaliação', 5, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Cavalgar', 5, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Charme', 15, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Chaveiro', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Astronomia', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Biologia', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Botânica', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Ciência Forense', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Engenharia', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Farmácia', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Física', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Geologia', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Matemática', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Meteorologia', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Química', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Zoologia', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Consertos Elétricos', 10, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Consertos Mecânicos', 10, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Contabilidade', 5, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Demolições', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Direito', 5, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Dirigir Automóveis', 20, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Disfarce', 5, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Eletrônica', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Encontrar', 25, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Escalar', 20, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Escutar', 20, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Antropologia', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (1, 'Arcos', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (1, 'Armas Pesadas', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (1, 'Lança-Chamas', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (1, 'Metralhadoras', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (1, 'Pistolas', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (1, 'Rifles/Espingardas', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (1, 'Submetralhadoras', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Arqueologia', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Arremessar', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (2, 'Atuação', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (2, 'Belas Artes', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (2, 'Criptografia', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (2, 'Falsificação', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (2, 'Fotografia', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Artilharia', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Avaliação', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Cavalgar', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Charme', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Chaveiro', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Astronomia', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Biologia', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Botânica', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Ciência Forense', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Engenharia', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Farmácia', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Física', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Geologia', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Matemática', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Meteorologia', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Química', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (3, 'Zoologia', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Consertos Elétricos', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Consertos Mecânicos', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Contabilidade', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Demolições', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Direito', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Dirigir Automóveis', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Disfarce', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Eletrônica', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Encontrar', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Escalar', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Escutar', 0, TRUE);
 INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Esquivar', 0, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Furtividade', 20, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Hipnose', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'História', 5, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Intimidação', 15, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Lábia', 5, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Leitura Labial', 1, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Furtividade', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Hipnose', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'História', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Intimidação', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Lábia', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Leitura Labial', 0, FALSE);
 INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (4, 'Nativa', 0, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Briga', 25, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Chicotes', 5, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Espadas', 20, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Garrote', 15, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Lanças', 20, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Machados', 15, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Manguais', 10, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Motosserras', 10, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Medicina', 1, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Mergulho', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Mundo Natural', 10, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Natação', 20, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Navegação', 10, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Briga', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Chicotes', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Espadas', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Garrote', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Lanças', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Machados', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Manguais', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (5, 'Motosserras', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Medicina', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Mergulho', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Mundo Natural', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Natação', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Navegação', 0, FALSE);
 INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Nível de Crédito', 0, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Ocultismo', 5, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Operar Maquinário Pesado', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Persuasão', 10, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (6, 'Aeronave', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (6, 'Barco', 1, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Prestidigitação', 10, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Primeiros Socorros', 30, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Psicanálise', 1, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Psicologia', 10, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Rastrear', 10, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Saltar', 20, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Treinar Animais', 5, FALSE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Usar Bibliotecas', 20, TRUE);
-INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Usar Computadores', 5, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Ocultismo', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Operar Maquinário Pesado', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Persuasão', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (6, 'Aeronave', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (6, 'Barco', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Prestidigitação', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Primeiros Socorros', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Psicanálise', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Psicologia', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Rastrear', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Saltar', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Treinar Animais', 0, FALSE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Usar Bibliotecas', 0, TRUE);
+INSERT INTO `skill` (`specialization_id`, `name`, `start_value`, `mandatory`) VALUES (NULL, 'Usar Computadores', 0, FALSE);
 
 CREATE TABLE `player_skill` (
     `player_skill_id` INT UNSIGNED NOT NULL AUTO_INCREMENT,
